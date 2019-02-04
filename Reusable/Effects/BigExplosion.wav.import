@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/BigExplosion.wav-50d0fe1a09ab233c8437d1f13826f9a2.sample"
+
+[deps]
+
+source_file="res://Reusable/Effects/BigExplosion.wav"
+dest_files=[ "res://.import/BigExplosion.wav-50d0fe1a09ab233c8437d1f13826f9a2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,171 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Reusable/Enemies/Small Roller/SmallRoller.gd" type="Script" id=1]
+[ext_resource path="res://Reusable/Enemies/Small Roller/Anim/Anim4.png" type="Texture" id=2]
+[ext_resource path="res://Reusable/Enemies/Small Roller/Anim/Anim1.png" type="Texture" id=3]
+[ext_resource path="res://Reusable/Enemies/Small Roller/Anim/Anim2.png" type="Texture" id=4]
+[ext_resource path="res://Reusable/Enemies/Small Roller/Anim/Anim3.png" type="Texture" id=5]
+[ext_resource path="res://Reusable/Effects/DamageFlash.tres" type="Animation" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "move",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 4 ), null, ExtResource( 2 ), null ],
+"loop": true,
+"name": "damage",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 130.0
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6.1482, 6.01324 )
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "damage"
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true ]
+}
+
+[node name="SmallRoller" type="KinematicBody2D" groups=[
+"Enemy",
+]]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "move"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." index="1"]
+
+position = Vector2( 0, 0.418697 )
+scale = Vector2( 1.25, 1.25 )
+build_mode = 0
+polygon = PoolVector2Array( -4.79049, 1.77372, -1.53026, 1.72832, -1.53026, -0.698144, -5.30476, -0.733996, -5.32723, -5.24991, 5.23238, -5.22744, 5.27732, -0.689062, 1.53864, -0.718857, 1.55399, 1.69864, 5.33739, 1.77372, 5.33739, 5.28338, -4.79049, 5.28338 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="." index="2"]
+
+scale = Vector2( 0.4, 0.4 )
+rect = Rect2( -10, -10, 20, 20 )
+pause_animations = true
+freeze_bodies = true
+pause_particles = true
+pause_animated_sprites = true
+process_parent = false
+physics_process_parent = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="Move" type="Area2D" parent="." index="3"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Move" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Idle" type="Area2D" parent="." index="4"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Idle" index="0"]
+
+modulate = Color( 0, 1, 0.0859375, 0.66298 )
+shape = SubResource( 3 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="hitBox" type="Area2D" parent="." index="5"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitBox" index="0"]
+
+position = Vector2( 0, 0.418697 )
+scale = Vector2( 1.25, 1.25 )
+shape = SubResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Anim" type="AnimationPlayer" parent="." index="6"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/DamageFlash = ExtResource( 6 )
+anims/damage = SubResource( 5 )
+blend_times = [  ]
+
+[connection signal="screen_entered" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_entered"]
+
+[connection signal="screen_exited" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_exited"]
+
+[connection signal="body_entered" from="Move" to="." method="_on_Move_body_entered"]
+
+[connection signal="body_exited" from="Idle" to="." method="_on_Idle_body_exited"]
+
+[connection signal="body_entered" from="hitBox" to="." method="_on_hitBox_body_entered"]
+
+
