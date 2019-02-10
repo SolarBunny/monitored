@@ -24,10 +24,13 @@ func _physics_process(delta):
 	animation()
 	if health <= 0 and not immortal:
 		die()
+	elif health > 6:
+		health = 6
 
 func movement():
-	if not dead:
-		var motion = movedir.normalized() * SPEED
+	var motion
+	if not dead and not immortal:
+		motion = movedir.normalized() * SPEED
 		move_and_slide(motion, WALL)
 
 func controls_loop():
@@ -88,4 +91,8 @@ func die():
 	emit_signal("died")
 	hide()
 	$CollisionShape2D.disabled = true
-	
+	set_physics_process(false)
+
+func restore():
+	health += 6
+	emit_signal("damaged", health)

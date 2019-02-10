@@ -135,7 +135,7 @@ length = 1.0
 loop = false
 step = 0.1
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -149,7 +149,7 @@ immortal = null
 
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
+frame = 3
 playing = true
 _sections_unfolded = [ "Visibility" ]
 
@@ -256,7 +256,7 @@ _sections_unfolded = [ "Margin", "Textures" ]
 [node name="hurt" type="AudioStreamPlayer" parent="." index="6"]
 
 stream = ExtResource( 16 )
-volume_db = 0.0
+volume_db = -6.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0

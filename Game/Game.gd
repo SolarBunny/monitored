@@ -31,3 +31,4 @@ func _on_Player_died():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if player_died:
 		get_tree().change_scene("res://Title/Title.tscn")
+
