@@ -23,6 +23,10 @@ func _physics_process(delta):
 			get_node("/root/Game").add_child(explosion)
 			queue_free()
 		if not body.is_in_group("Enemy"):
-			explosion.position = position
-			get_node("/root/Game").add_child(explosion)
-			queue_free()
+			#explosion.position = position
+			#get_node("/root/Game").add_child(explosion)
+			#queue_free()
+			pass
+	
+func _on_VisibilityEnabler2D_screen_exited():
+	queue_free()

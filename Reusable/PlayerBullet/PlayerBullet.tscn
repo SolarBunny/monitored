@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 radius = 2.59149
 
-[node name="PlayerBullet" type="Area2D"]
+[node name="PlayerBullet" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -33,7 +33,7 @@ shape = SubResource( 1 )
 [node name="sound" type="AudioStreamPlayer" parent="." index="2"]
 
 stream = ExtResource( 3 )
-volume_db = 0.0
+volume_db = -6.0
 pitch_scale = 1.0
 autoplay = true
 mix_target = 0

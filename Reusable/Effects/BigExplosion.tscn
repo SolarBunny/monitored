@@ -86,14 +86,16 @@ wait_time = 3.0
 one_shot = false
 autostart = true
 
-[node name="explodesound" type="AudioStreamPlayer" parent="." index="1"]
+[node name="explodesound" type="AudioStreamPlayer2D" parent="." index="1"]
 
 stream = ExtResource( 2 )
-volume_db = 0.0
+volume_db = -5.0
 pitch_scale = 1.0
 autoplay = false
-mix_target = 0
+max_distance = 2000.0
+attenuation = 1.0
 bus = "Sounds"
+area_mask = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 

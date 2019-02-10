@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Reusable/Enemies/Small Roller/SmallRoller.gd" type="Script" id=1]
 [ext_resource path="res://Reusable/Enemies/Small Roller/Anim/Anim4.png" type="Texture" id=2]
-[ext_resource path="res://Reusable/Enemies/Small Roller/Anim/Anim1.png" type="Texture" id=3]
-[ext_resource path="res://Reusable/Enemies/Small Roller/Anim/Anim2.png" type="Texture" id=4]
+[ext_resource path="res://Reusable/Enemies/Small Roller/Anim/Anim2.png" type="Texture" id=3]
+[ext_resource path="res://Reusable/Enemies/Small Roller/Anim/Anim1.png" type="Texture" id=4]
 [ext_resource path="res://Reusable/Enemies/Small Roller/Anim/Anim3.png" type="Texture" id=5]
 [ext_resource path="res://Reusable/Effects/DamageFlash.tres" type="Animation" id=6]
 
@@ -15,15 +15,15 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "move",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 4 ), null, ExtResource( 2 ), null ],
+"frames": [ ExtResource( 3 ), null, ExtResource( 2 ), null ],
 "loop": true,
 "name": "damage",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "move",
+"speed": 7.0
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
@@ -100,6 +100,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="Move" type="Area2D" parent="." index="3"]
 
 editor/display_folded = true
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -115,6 +116,7 @@ shape = SubResource( 2 )
 [node name="Idle" type="Area2D" parent="." index="4"]
 
 editor/display_folded = true
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0

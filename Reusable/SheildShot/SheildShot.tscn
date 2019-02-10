@@ -230,12 +230,24 @@ _sections_unfolded = [ "Playback Options" ]
 [node name="sound" type="AudioStreamPlayer2D" parent="." index="5"]
 
 stream = ExtResource( 3 )
-volume_db = 0.0
+volume_db = -6.0
 pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
-bus = "Master"
+bus = "Sounds"
 area_mask = 1
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="." index="6"]
+
+rect = Rect2( -10, -10, 20, 20 )
+pause_animations = true
+freeze_bodies = true
+pause_particles = true
+pause_animated_sprites = true
+process_parent = false
+physics_process_parent = false
+
+[connection signal="screen_exited" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_exited"]
 
 

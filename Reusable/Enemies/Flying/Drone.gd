@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+signal dead
 var movedir = Vector2()
 var move
 var can_shoot
@@ -28,6 +29,7 @@ func _physics_process(delta):
 		var explosion = RESOURCES.big_explosion.instance()
 		explosion.position = position
 		root.add_child(explosion)
+		emit_signal("dead")
 		queue_free()
 		pass
 
